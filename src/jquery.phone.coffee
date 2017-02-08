@@ -822,11 +822,11 @@ formatForwardPhone = (e) ->
   $target.val(formattedPhone(value, true))
 
 formatBackPhone = (e) ->
-  $target = $(e.currentTarget)
-  value   = $target.val()
-
   # Return unless backspacing
   return unless e.which is 8
+  
+  $target = $(e.currentTarget)
+  value   = $target.val()
 
   # Return if focus isn't at the end of the text
   return if $target.prop('selectionStart')? and
@@ -850,7 +850,7 @@ checkForCountryChange = (e) ->
 
 # Restrict Input
 
-restrictInput = (e) ->
+restrictNumeric = (e) ->
   # Key event is for a browser shortcut
   return true if e.metaKey or e.ctrlKey
 
@@ -872,8 +872,9 @@ restrictInput = (e) ->
 # Formatting
 
 $.phone.fn.init = ->
-  @on('keypress', restrictInput)
-  @on('keyup', formatForwardPhone)
+  @on('keypress', restrictNumeric)
+  @on('keypress', formatPhone)
+  @on('keypress', formatForwardPhone)
   @on('keydown', formatBackPhone)
   @on('paste', reFormatPhone)
   @on('change', reFormatPhone)

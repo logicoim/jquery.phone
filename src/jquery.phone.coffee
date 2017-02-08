@@ -3,7 +3,6 @@ $.phone = {}
 $.phone.fn = {}
 $.fn.phone = (method, args...) ->
   if !method? or !(typeof(method) == 'string')
-    args = [ method ] if method?
     method = 'init'
   $.phone.fn[method].apply(this, args);
 
@@ -872,7 +871,7 @@ restrictInput = (e) ->
 
 # Formatting
 
-$.phone.fn.init = (options = {}) ->
+$.phone.fn.init = ->
   @on('keypress', restrictInput)
   @on('keyup', formatForwardPhone)
   @on('keydown', formatBackPhone)

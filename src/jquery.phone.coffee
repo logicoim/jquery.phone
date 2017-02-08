@@ -878,7 +878,6 @@ $.phone.fn.init = ->
   @on('paste', reFormatPhone)
   @on('change', reFormatPhone)
   @on('input', reFormatPhone)
-  @data('defaultPrefix', options.allowPhoneWithoutPrefix ? options.defaultPrefix)
   $.phone.formatPhone($(this).val())
   this
 

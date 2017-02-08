@@ -886,7 +886,7 @@ $.phone.fn.init = (options = {}) ->
 $.phone.fn.formatPhone = ->
   $.phone.formatPhone($(this).val())
 
-$.phone.formatPhone(value) ->
+$.phone.formatPhone = (value) ->
   format = formatFromPhone(value)
   return value unless format
 

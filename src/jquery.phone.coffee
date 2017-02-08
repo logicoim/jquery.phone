@@ -783,7 +783,7 @@ formatPhone = (e) ->
 
 formattedPhone = (phone, lastChar) ->
   if phone.length != 0 and phone.substring(0, 1) == '+'
-    format = formatFormPhone(phone)
+    format = formatFromPhone(phone)
     if format && format.format
       phoneFormat = format.format
       phonePrefix = format.prefix

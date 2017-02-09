@@ -14,7 +14,7 @@
     "type": "git",
     "url": "https://github.com/ellisio/jquery.phone.git"
   },
-  "main": "lib/jquery.phone.js",
+  "main": "dist/jquery.phone.js",
   "dependencies": {
     "jquery": "^3.1"
   },

@@ -276,7 +276,10 @@
     }
   };
 
-  $.phone.fn.init = function() {
+  $.phone.fn.init = function(options) {
+    if (options == null) {
+      options = {};
+    }
     this.on('keypress', restrictNumeric);
     this.on('keypress', restrictPhone);
     this.on('keypress', formatPhone);
@@ -286,6 +289,12 @@
     this.on('change', reFormatPhone);
     this.on('input', reFormatPhone);
     this.on('input', setPhoneCountry);
+    if (options.defaultPrefix != null) {
+      defaultPrefix = options.defaultPrefix;
+    }
+    if (options.value != null) {
+      this.val(options.value).change();
+    }
     return this;
   };
 

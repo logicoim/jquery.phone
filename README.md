@@ -9,20 +9,25 @@ $('input.phone-num').phone();
 You can bind to an event when the user changes the country of the phone number:
 
 ``` javascript
-$('input.phone-num').bind('country.phone', function(e, country) {
+$('input.phone-num').bind('phone.country', function(e, country) {
   console.log('The new country code:', country);
 })
 ```
-
-Dependencies:
-
-* Tested on jQuery 3.1.x
 
 ## API
 
 ### $.fn.phone()
 
 Enables phone number formatting.
+
+### $.fn.phone(options)
+
+Enables phone number formatting, with the given options.
+
+Available options:
+
+- `defaultPrefix`: Set the default prefix, default is `+1`
+- `value`: Set the default value of the input.
 
 ### $.fn.phone('val')
 

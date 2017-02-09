@@ -238,7 +238,7 @@ setPhoneCountry = (e) ->
 
 # Initialization
 
-$.phone.fn.init = ->
+$.phone.fn.init = (options = {}) ->
   @on('keypress', restrictNumeric)
   @on('keypress', restrictPhone)
   @on('keypress', formatPhone)
@@ -248,6 +248,13 @@ $.phone.fn.init = ->
   @on('change', reFormatPhone)
   @on('input', reFormatPhone)
   @on('input', setPhoneCountry)
+
+  if options.defaultPrefix?
+    defaultPrefix = options.defaultPrefix
+
+  if options.value?
+    @val(options.value).change()
+
   this
 
 # Getters

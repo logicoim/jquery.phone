@@ -4,5 +4,14 @@
   "main": "lib/jquery.phone.js",
   "dependencies": {
     "jquery": ">=3.1"
-  }
+  },
+  "ignore": [
+    ".gitignore",
+    ".sizecache.json",
+    ".travis.yml",
+    "Gruntfile.js",
+    "package.json",
+    "phone.jquery.json",
+    "yarn.lock"
+  ]
 }

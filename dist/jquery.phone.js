@@ -322,15 +322,12 @@
 
   $.phone.fn.validate = function() {
     var country, value;
-    value = this.val().replace(/\D/g, '');
-    if (!/^\d+$/.test(value)) {
-      return false;
-    }
+    value = this.phone('val');
     country = countryFromPhone(value);
     if (!country) {
       return false;
     }
-    return phone.length === country.length;
+    return value.length === country.length;
   };
 
   $.phone.country = function(phone) {

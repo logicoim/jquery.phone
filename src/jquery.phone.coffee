@@ -278,13 +278,11 @@ $.phone.fn.prefix = () ->
 # Validations
 
 $.phone.fn.validate = () ->
-  value = @val().replace(/\D/g, '')
-  return false unless /^\d+$/.test(value)
-
+  value   = @phone('val')
   country = countryFromPhone(value)
   return false unless country
 
-  return phone.length == country.length
+  return value.length == country.length
 
 # Helpers
 

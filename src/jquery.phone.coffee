@@ -272,7 +272,7 @@ $.phone.fn.country = () ->
 
 $.phone.fn.prefix = () ->
   value = @phone('val')
-  $.phone.prefix(code)
+  $.phone.prefix(value)
 
 
 # Validations

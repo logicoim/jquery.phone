@@ -317,7 +317,7 @@
   $.phone.fn.prefix = function() {
     var value;
     value = this.phone('val');
-    return $.phone.prefix(code);
+    return $.phone.prefix(value);
   };
 
   $.phone.fn.validate = function() {

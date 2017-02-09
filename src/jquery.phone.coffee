@@ -36,6 +36,7 @@ countryFromPhone = (phone) ->
     phone = defaultPrefix + phone.replace(/\D/g, '')
   else
     phone = '+' + phone.replace(/\D/g, '');
+
   bestMatch = null
   precision = 0
 
@@ -46,10 +47,8 @@ countryFromPhone = (phone) ->
         bestMatch[k] = v
       bestMatch.prefix = prefix
       precision = prefix.length
-  bestMatch
 
-countryFromCode = (code) ->
-  return country for country in counties when country.code is code
+  bestMatch
 
 hasTextSelected = ($target) ->
   # If some text is selected
@@ -237,7 +236,7 @@ setPhoneCountry = (e) ->
 
 # Public
 
-# Formatting
+# Initialization
 
 $.phone.fn.init = ->
   @on('keypress', restrictNumeric)
@@ -251,10 +250,28 @@ $.phone.fn.init = ->
   @on('input', setPhoneCountry)
   this
 
+# Getters
+
+$.phone.fn.val = () ->
+  value = @val().replace(/\D/g, '')
+  if @val().indexOf('+') == 0 or !defaultPrefix
+    '+' + value
+  else
+    defaultPrefix + value
+
+$.phone.fn.country = () ->
+  value = @phone('val')
+  $.phone.country(value)
+
+$.phone.fn.prefix = () ->
+  value = @phone('val')
+  $.phone.prefix(code)
+
+
 # Validations
 
-$.phone.fn.validatePhone = (phone) ->
-  phone = (phone + '').replace(/\D/g, '')
+$.phone.fn.validate = () ->
+  value = @val().replace(/\D/g, '')
   return false unless /^\d+$/.test(phone)
 
   country = countryFromPhone(phone)
@@ -267,6 +284,10 @@ $.phone.fn.validatePhone = (phone) ->
 $.phone.country = (phone) ->
   return null unless phone
   countryFromPhone(phone)?.code or null
+
+$.phone.prefix = (phone) ->
+  return null unless phone
+  countryFromPhone(phone)?.prefix or null
 
 $.phone.formatPhone = (phone) ->
   # Return if the phone is empty

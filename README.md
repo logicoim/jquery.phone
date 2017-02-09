@@ -92,7 +92,7 @@ Triggered when the country has changed.
 Example:
 
 ``` javascript
-$('input.phone-num').bind('country.phone', function(e, country) {
+$('input.phone-num').bind('phone.country', function(e, country) {
   console.log('The new country code:', country);
 })
 
@@ -103,11 +103,7 @@ $('input.phone-num').val('+32495123456').keyup();
 
 ## Building
 
-Run `cake build`
-
-## Running tests
-
-Run `cake test`
+Run `grunt`
 
 ## Mobile recommendations
 

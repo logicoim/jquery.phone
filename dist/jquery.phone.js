@@ -1,7 +1,7 @@
 /*! jquery.phone v1.0.0 | Copyright 2017 Andrew Ellis (awellis89@gmail.com) | MIT */
 
 (function() {
-  var $, countries, countryFromCode, countryFromPhone, defaultPrefix, formatBackPhone, formatPhone, hasTextSelected, prefixesAreSubsets, reFormatPhone, replaceFullWidthChars, restrictNumeric, restrictPhone, safeVal, setPhoneCountry,
+  var $, countries, countryFromPhone, defaultPrefix, formatBackPhone, formatPhone, hasTextSelected, prefixesAreSubsets, reFormatPhone, replaceFullWidthChars, restrictNumeric, restrictPhone, safeVal, setPhoneCountry,
     slice = [].slice;
 
   $ = window.jQuery || window.$;
@@ -75,16 +75,6 @@
       }
     }
     return bestMatch;
-  };
-
-  countryFromCode = function(code) {
-    var country, j, len;
-    for (j = 0, len = counties.length; j < len; j++) {
-      country = counties[j];
-      if (country.code === code) {
-        return country;
-      }
-    }
   };
 
   hasTextSelected = function($target) {
@@ -299,9 +289,31 @@
     return this;
   };
 
-  $.phone.fn.validatePhone = function(phone) {
-    var country;
-    phone = (phone + '').replace(/\D/g, '');
+  $.phone.fn.val = function() {
+    var value;
+    value = this.val().replace(/\D/g, '');
+    if (this.val().indexOf('+') === 0 || !defaultPrefix) {
+      return '+' + value;
+    } else {
+      return defaultPrefix + value;
+    }
+  };
+
+  $.phone.fn.country = function() {
+    var value;
+    value = this.phone('val');
+    return $.phone.country(value);
+  };
+
+  $.phone.fn.prefix = function() {
+    var value;
+    value = this.phone('val');
+    return $.phone.prefix(code);
+  };
+
+  $.phone.fn.validate = function() {
+    var country, value;
+    value = this.val().replace(/\D/g, '');
     if (!/^\d+$/.test(phone)) {
       return false;
     }
@@ -318,6 +330,14 @@
       return null;
     }
     return ((ref = countryFromPhone(phone)) != null ? ref.code : void 0) || null;
+  };
+
+  $.phone.prefix = function(phone) {
+    var ref;
+    if (!phone) {
+      return null;
+    }
+    return ((ref = countryFromPhone(phone)) != null ? ref.prefix : void 0) || null;
   };
 
   $.phone.formatPhone = function(phone) {

@@ -294,6 +294,8 @@
     }
     if (options.value != null) {
       this.val(options.value).change();
+    } else if (this.val() != null) {
+      this.change();
     }
     return this;
   };

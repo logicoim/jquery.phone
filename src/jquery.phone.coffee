@@ -254,6 +254,8 @@ $.phone.fn.init = (options = {}) ->
 
   if options.value?
     @val(options.value).change()
+  else if @val()?
+    @change()
 
   this
 

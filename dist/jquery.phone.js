@@ -322,7 +322,7 @@
 
   $.phone.fn.validate = function() {
     var country, value;
-    value = this.phone('val');
+    value = this.phone('val').replace(/\D/g, '');
     country = countryFromPhone(value);
     if (!country) {
       return false;

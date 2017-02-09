@@ -3,13 +3,13 @@
 A general purpose library for validating and formatting phone numbers.
 
 ``` javascript
-$('input.phone-num').phone();
+$('#phone').phone();
 ```
 
 You can bind to an event when the user changes the country of the phone number:
 
 ``` javascript
-$('input.phone-num').bind('phone.country', function(e, country) {
+$('#phone').bind('phone.country', function(e, country) {
   console.log('The new country code:', country);
 })
 ```
@@ -29,15 +29,24 @@ Available options:
 - `defaultPrefix`: Set the default prefix, default is `+1`
 - `value`: Set the default value of the input.
 
+Example:
+
+```javascript
+$('#phone').phone({
+    defaultPrefix: '+44',
+    value: '7700900680'
+});
+```
+
 ### $.fn.phone('val')
 
 Returns the phone number value with prefix, but without other formatting.
 
 Example:
 
-``` javascript
-$('input.phone-num').val(); //=> '+1 (415) 123-5554'
-$('input.phone-num').phone('val'); //=> '+14151235554'
+```javascript
+//=> '+1 (415) 123-5554'
+$('#phone').phone('val'); //=> '+14151235554'
 ```
 
 ### $.fn.phone('validate')
@@ -49,11 +58,11 @@ Returns whether the phone number is valid.
 Example:
 
 ``` javascript
-$('input.phone-num').val(); //=> '+1 (415) 123-5554'
-$('input.phone-num').phone('validate'); //=> true
+//=> '+1 (415) 123-5554'
+$('#phone').phone('validate'); //=> true
 
-$('input.phone-num').val(); //=> '+43'
-$('input.phone-num').phone('validate'); //=> false
+//=> '+43'
+$('#phone').phone('validate'); //=> false
 ```
 
 ### $.fn.phone('country')
@@ -62,9 +71,8 @@ Returns the two-letter country code of the phone number.
 
 Example:
 
-``` javascript
-$('input.phone-num').val(); //=> '+32 495 12 34 56'
-$('input.phone-num').phone('country'); //=> 'BE'
+```javascript
+$('#phone').phone('country'); //=> 'BE'
 ```
 
 ### $.fn.phone('prefix')
@@ -74,8 +82,8 @@ Returns the prefix of the phone number.
 Example:
 
 ``` javascript
-$('input.phone-num').val(); //=> '+32 495 12 34 56'
-$('input.phone-num').phone('prefix'); //=> '+32'
+$('#phone').val(); //=> '+32 495 12 34 56'
+$('#phone').phone('prefix'); //=> '+32'
 ```
 
 ### $.formatPhone(phone)
@@ -97,12 +105,12 @@ Triggered when the country has changed.
 Example:
 
 ``` javascript
-$('input.phone-num').bind('phone.country', function(e, country) {
+$('#phone').bind('phone.country', function(e, country) {
   console.log('The new country code:', country);
 })
 
 // Simulate user input
-$('input.phone-num').val('+32495123456').keyup();
+$('#phone').val('+32495123456').keyup();
 //=> The new country code: BE
 ```
 

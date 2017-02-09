@@ -323,10 +323,10 @@
   $.phone.fn.validate = function() {
     var country, value;
     value = this.val().replace(/\D/g, '');
-    if (!/^\d+$/.test(phone)) {
+    if (!/^\d+$/.test(value)) {
       return false;
     }
-    country = countryFromPhone(phone);
+    country = countryFromPhone(value);
     if (!country) {
       return false;
     }

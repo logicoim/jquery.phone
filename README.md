@@ -2,6 +2,8 @@
 
 A general purpose library for validating and formatting phone numbers.
 
+This library is a fork from [Stripe's outdated plugin](https://github.com/stripe/jquery.mobilePhoneNumber).
+
 ``` javascript
 $('#phone').phone();
 ```

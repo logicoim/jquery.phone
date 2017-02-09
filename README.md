@@ -2,19 +2,21 @@
 
 A general purpose library for validating and formatting phone numbers.
 
-This library is a fork from [Stripe's outdated plugin](https://github.com/stripe/jquery.mobilePhoneNumber).
+Basic Example:
 
-``` javascript
+```javascript
 $('#phone').phone();
 ```
 
 You can bind to an event when the user changes the country of the phone number:
 
-``` javascript
+```javascript
 $('#phone').bind('phone.country', function(e, country) {
   console.log('The new country code:', country);
-})
+});
 ```
+
+_This library is a fork from [Stripe's outdated plugin](https://github.com/stripe/jquery.mobilePhoneNumber)._
 
 ## API
 

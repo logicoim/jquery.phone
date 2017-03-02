@@ -101,8 +101,6 @@ safeVal = (value, $target) ->
 
     $target.prop('selectionStart', cursor)
     $target.prop('selectionEnd', cursor)
-  else
-    $target.change()
 
 # Replace Full-Width Chars
 

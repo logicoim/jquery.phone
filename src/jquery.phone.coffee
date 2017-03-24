@@ -262,7 +262,9 @@ $.phone.fn.init = (options = {}) ->
 # Getters
 
 $.phone.fn.val = () ->
-  value = @val().replace(/\D/g, '')
+  value = @val()
+  return '' unless value
+  value = value.replace(/\D/g, '')
   if @val().indexOf('+') == 0 or !defaultPrefix
     '+' + value
   else

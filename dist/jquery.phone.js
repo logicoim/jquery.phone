@@ -1,4 +1,4 @@
-/*! jquery.phone v1.0.3 | Copyright 2017 Andrew Ellis (awellis89@gmail.com) | MIT */
+/*! jquery.phone v1.0.4 | Copyright 2017 Andrew Ellis (awellis89@gmail.com) | MIT */
 
 (function() {
   var $, countries, countryFromPhone, defaultPrefix, formatBackPhone, formatPhone, hasTextSelected, prefixesAreSubsets, reFormatPhone, replaceFullWidthChars, restrictNumeric, restrictPhone, safeVal, setPhoneCountry,
@@ -302,7 +302,11 @@
 
   $.phone.fn.val = function() {
     var value;
-    value = this.val().replace(/\D/g, '');
+    value = this.val();
+    if (!value) {
+      return '';
+    }
+    value = value.replace(/\D/g, '');
     if (this.val().indexOf('+') === 0 || !defaultPrefix) {
       return '+' + value;
     } else {
